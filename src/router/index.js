@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Validators from "../views/Validators.vue";
-import Validator from "../views/Validator.vue";
+import ChainSelect from "../views/ChainSelect.vue";
 
 const routes = [
   {
@@ -9,15 +9,11 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  { path: "/chain-select", name: "ChainSelect", component: ChainSelect },
   {
     path: "/validators",
     name: "Validators",
     component: Validators,
-  },
-  {
-    path: "/validator/:address",
-    name: "Validator",
-    component: Validator,
   },
 ];
 

@@ -1,43 +1,25 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <div v-for="validator in validators" :key="validator.operator_address">
-      <div>
-        <router-link :to="{ name: "Validator", params: { address: validator.operator_address},}">
-          <p>
-            {{ JSON.stringify(validator) }}
-          </p>
-        </router-link>
-      </div>
-    </div>
-  </div>
+  <div><ValidatorList :validators="getValidators" /></div>
 </template>
 
 <script>
 // @ is an alias to /src
-import axios from "axios";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mapGetters, mapActions } from "vuex";
+import ValidatorList from "../components/ValidatorList.vue";
 
 export default {
   name: "Validators",
   components: {
-    HelloWorld,
+    ValidatorList,
   },
-  data() {
-    return {
-      validators: [],
-    };
+  methods: {
+    ...mapActions(["fetchValidators"]),
+  },
+  computed: {
+    ...mapGetters(["getValidators"]),
   },
   mounted() {
-    axios
-      .get("http://127.0.0.1:3000/akash/validators")
-      .then((response) => {
-        console.log(response.data.result);
-        this.validators = response.data.result;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.fetchValidators();
   },
 };
 </script>
