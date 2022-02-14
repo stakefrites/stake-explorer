@@ -1,5 +1,5 @@
 <template>
-  <div class="home">HOME</div>
+  <div class="container">HOME</div>
 </template>
 
 <script>
@@ -8,6 +8,11 @@ export default {
   props: {
     value: String,
   },
+  data() {},
   components: {},
+  methods: {},
+  computed: {},
 };
 </script>
+
+<style scoped></style>

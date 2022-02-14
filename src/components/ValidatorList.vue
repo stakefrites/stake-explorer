@@ -31,15 +31,6 @@
 </template>
 
 <script>
-/* Valnodes - Carbon Neutral Staking
-akashvaloper1qwpnhmdlfj6gfyh0e29fjudh0ytfe5l7tjttul
-{"operator_address":"akashvaloper1qwpnhmdlfj6gfyh0e29fjudh0ytfe5l7tjttul","consensus_pubkey":{"type":"tendermint/PubKeyEd25519","value":"kVP7pCAT+NrTyhqsG0vEwlRoyul1Q9yeTJas+v1U07g="},"status":3,"tokens":"412254000000","delegator_shares":"412254000000.000000000000000000","description":{"moniker":"Valnodes
-- Carbon Neutral
-Staking","identity":"7ACD3320CCADD897","website":"https://www.valnodes.com","details":"Carbon-Neutral
-| Transparent | Smart validator backed by cutting edge innovations in
-active-sync, one-sign to ensure high uptime. Reach us at
-t.me/ValNodes."},"unbonding_time":"1970-01-01T00:00:00Z","commission":{"commission_rates":{"rate":"0.100000000000000000","max_rate":"0.200000000000000000","max_change_rate":"0.010000000000000000"},"update_time":"2022-01-13T08:58:27.360171457Z"},"min_self_delegation":"1"}
-*/
 import axios from "axios";
 
 import { mapGetters } from "vuex";
