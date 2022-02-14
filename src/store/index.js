@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import axios from "axios";
 
+const BASE_URL = process.env.BASE_URL;
+
 export default createStore({
   state: {
     selectedChain: null,
@@ -57,7 +59,7 @@ export default createStore({
     async fetchValidators({ commit, state }) {
       commit("setLoading", true);
       const response = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/validators"
+        BASE_URL + state.selectedChain + "/validators"
       );
       commit("setValidators", response.data.result);
 
@@ -65,7 +67,7 @@ export default createStore({
     },
     async fetchSingleValidator({ commit, state }) {
       const response = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/validators"
+        BASE_URL + state.selectedChain + "/validators"
       );
 
       commit("setValidator", response.data.result);
@@ -76,10 +78,7 @@ export default createStore({
     async fetchTransactions({ commit, state }, address) {
       commit("setLoading", true);
       const response = await axios.get(
-        "http://127.0.0.1:3000/" +
-          state.selectedChain +
-          "/transactions/" +
-          address
+        BASE_URL + state.selectedChain + "/transactions/" + address
       );
       commit("setTransactions", response.data.txs.reverse());
       commit("setLoading", false);
@@ -87,7 +86,7 @@ export default createStore({
     async fetchRewards({ commit, state }, address) {
       commit("setLoading", true);
       const response = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/rewards/" + address
+        BASE_URL + state.selectedChain + "/rewards/" + address
       );
       commit("setRewards", response.data);
       commit("setLoading", false);
@@ -95,10 +94,7 @@ export default createStore({
     async fetchDelegations({ commit, state }, address) {
       commit("setLoading", true);
       const response = await axios.get(
-        "http://127.0.0.1:3000/" +
-          state.selectedChain +
-          "/delegations/" +
-          address
+        BASE_URL + state.selectedChain + "/delegations/" + address
       );
       let total = response.data.delegation_responses
         .map((el) => parseFloat(el.balance.amount))
@@ -115,7 +111,7 @@ export default createStore({
     async fetchBalances({ commit, state }, address) {
       commit("setLoading", true);
       const response = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/balances/" + address
+        BASE_URL + state.selectedChain + "/balances/" + address
       );
       commit("setBalances", response.data);
       commit("setLoading", false);
@@ -127,7 +123,7 @@ export default createStore({
       // Fetch balances
       // -------------------------------
       const balances = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/balances/" + address
+        BASE_URL + state.selectedChain + "/balances/" + address
       );
       commit("setBalances", balances.data);
 
@@ -135,10 +131,7 @@ export default createStore({
       // Fetch delegations
       // -------------------------------
       const delegations = await axios.get(
-        "http://127.0.0.1:3000/" +
-          state.selectedChain +
-          "/delegations/" +
-          address
+        BASE_URL + state.selectedChain + "/delegations/" + address
       );
       let total = delegations.data.delegation_responses
         .map((el) => parseFloat(el.balance.amount))
@@ -155,7 +148,7 @@ export default createStore({
       // Fetch rewards
       // -------------------------------
       const rewards = await axios.get(
-        "http://127.0.0.1:3000/" + state.selectedChain + "/rewards/" + address
+        BASE_URL + state.selectedChain + "/rewards/" + address
       );
       commit("setRewards", rewards.data);
 
@@ -163,10 +156,7 @@ export default createStore({
       // Fetch all transactions
       // -------------------------------
       const transactions = await axios.get(
-        "http://127.0.0.1:3000/" +
-          state.selectedChain +
-          "/transactions/" +
-          address
+        BASE_URL + state.selectedChain + "/transactions/" + address
       );
       commit("setTransactions", transactions.data.txs.reverse());
       // -------------------------------
