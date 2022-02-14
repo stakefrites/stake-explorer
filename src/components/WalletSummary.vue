@@ -1,4 +1,5 @@
 <template>
+  <div><Chart :chartData="chartData"></Chart></div>
   <b-card>
     <p>
       Rewards:
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import Chart from "@/components/Chart.vue";
 export default {
   name: "WalletSummary",
   props: {
@@ -36,9 +38,30 @@ export default {
     balances: Object,
     total: Number,
   },
-  components: {},
+  components: { Chart },
   methods: {},
-  computed: {},
+  mounted() {
+    console.log(this.rewards);
+  },
+  computed: {
+    chartData: function () {
+      return {
+        labels: ["Staked", "Available", "Rewards"],
+        datasets: [
+          {
+            label: "My First Dataset",
+            data: [300, 50, 100],
+            backgroundColor: [
+              "rgb(255, 99, 132)",
+              "rgb(54, 162, 235)",
+              "rgb(255, 205, 86)",
+            ],
+            hoverOffset: 5,
+          },
+        ],
+      };
+    },
+  },
 };
 </script>
 

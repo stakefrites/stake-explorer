@@ -1,15 +1,19 @@
 <template>
-  <div class="container">HOME</div>
+  <div class="container">
+    <p>HOME</p>
+    <Chart></Chart>
+  </div>
 </template>
 
 <script>
+import Chart from "@/components/Chart.vue";
 export default {
   name: "Home",
   props: {
     value: String,
   },
   data() {},
-  components: {},
+  components: { Chart },
   methods: {},
   computed: {},
 };
